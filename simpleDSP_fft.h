@@ -2,7 +2,7 @@
 #ifndef _SIMPLEDSP_FFT_H
 #define _SIMPLEDSP_FFT_H
 
-extern COMPLEX w[];
+extern const COMPLEX w[];
 
 void FFT(COMPLEX *Y, int N);
 void IFFT(COMPLEX *Y, int N);
