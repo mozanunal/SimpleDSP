@@ -3,6 +3,7 @@ N point Complex fft and inverse fft functions
 */
 
 #include "simpleDSP_Global.h"
+#include "simpleDSP_fft.h"
 #include "twiddle.h"
 
 
