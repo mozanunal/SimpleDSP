@@ -144,7 +144,7 @@ void IFFT(COMPLEX *Y, int N) /*input sample array, # of points      */
   return;
   }
 
-const COMPLEX w[] = {
+COMPLEX w[] = {
        1.00000,-0.00000,
        0.99992,-0.01227,
        0.99970,-0.02454,
