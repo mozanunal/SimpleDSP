@@ -144,16 +144,3 @@ void IFFT(COMPLEX *Y, int N) /*input sample array, # of points      */
     }
   return;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
