@@ -1,3 +1,11 @@
+/*This is a signal sum of 800 hz and 3.2 khz sine waves
+which sampled in 10khz and 32 of this samples are 
+create a data array.
+In this example first fft later inverse fft of 
+signal calculated by arduino after the process output 
+data will be same with input as we expected.
+*/
+
 #include "simpleDSP_fft.h"
 
 #define DATA_LEN 32
