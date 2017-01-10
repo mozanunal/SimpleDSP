@@ -90,7 +90,6 @@ void setup() {
   Serial.println(calcTime);
   for (int i=0; i<DATA_LEN; i++)
   {
-    //Serial.println(sqrt((data[i].real/DATA_LEN)*(data[i].real/DATA_LEN)+(data[i].imag/DATA_LEN)*(data[i].imag/DATA_LEN)));
     Serial.println(abs(data[i].real));
   }
 }
