@@ -1,5 +1,5 @@
 ###########################################
-# Syntax Coloring Map For DHT-sensor-library
+# Syntax Coloring Map For SimpleDSP
 ###########################################
 
 ###########################################
@@ -7,6 +7,7 @@
 ###########################################
 
 COMPLEX	KEYWORD1
+FIR KEYWORD1
 
 ###########################################
 # Methods and Functions (KEYWORD2)
