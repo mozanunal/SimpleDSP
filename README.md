@@ -1,6 +1,8 @@
 # SimpleDSP
 A basic dsp library for arduino and most of the microcontrollers which can be programmed in C/C++
 
+https://github.com/mozanunal/SimpleDSP/wiki
+
 ## Performance:
 
 ### Arduino Nano
