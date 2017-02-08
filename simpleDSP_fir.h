@@ -14,8 +14,8 @@ struct FIR
   float *dly;
 };
     
-void init (FIR *fir, int N, float *coef);
-float filt(FIR *fir, int input);
+void initFIR(FIR *fir, int N, float *coef);
+float filtFIR(FIR *fir, int input);
 
 
 
