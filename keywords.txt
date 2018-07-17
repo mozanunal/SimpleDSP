@@ -7,12 +7,12 @@
 ###########################################
 
 COMPLEX	KEYWORD1
-FIR KEYWORD1
+FIR	KEYWORD1
 
 ###########################################
 # Methods and Functions (KEYWORD2)
 ###########################################
 
-FFT KEYWORD2
-IFFT KEYWORD2
+FFT	KEYWORD2
+IFFT	KEYWORD2
 
