@@ -20,7 +20,7 @@ for 10 coeficients implementation max frequency 5khz
 * fft 128 points: 6 ms
 * fft 256 points: 10 ms
 
-## Fast Fourier Transform(FFT ) and Inverse Fast Fourier Transform(IFFT)
+## Fast Fourier Transform (FFT) and Inverse Fast Fourier Transform (IFFT)
 
 [detailed info](https://en.m.wikipedia.org/wiki/Fast_Fourier_transform)
 
@@ -73,7 +73,7 @@ plot(kor,X);
 
 [detailed info](https://en.wikipedia.org/wiki/Finite_impulse_response)
 
-### Arduino example
+### Test Arduino example
 FIR is filter structure which keep delays and coeficient of filter. filtFIR function require 2 arguments.
 data 
 data lenght
@@ -96,7 +96,7 @@ Do not forget to add `#include "simpleDSP_fir.h"`
     Serial.println(calcTime);
   }
 ```
-### Octave Code
+### Test Octave Code
 
 filter design
 
