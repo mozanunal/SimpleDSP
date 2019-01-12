@@ -24,7 +24,7 @@ for 10 coeficients implementation max frequency 5khz
 
 [detailed info](https://en.m.wikipedia.org/wiki/Fast_Fourier_transform)
 
-### Arduino example
+### Arduino Example
 FFT and IFFT functions require 2 arguments.
 data 
 data lenght
@@ -39,7 +39,7 @@ Do not forget to add `#include "simpleDSP_fft.h"`
   Serial.println(calcTime);
 ```
 
-### Octave Code
+### Octave Test Code
 
 This code create sample data and plot the signal and its fft. The octave code only needed for testing of function.
 
@@ -73,7 +73,7 @@ plot(kor,X);
 
 [detailed info](https://en.wikipedia.org/wiki/Finite_impulse_response)
 
-### Test Arduino example
+### Arduino Example
 FIR is filter structure which keep delays and coeficient of filter. filtFIR function require 2 arguments.
 data 
 data lenght
@@ -96,7 +96,7 @@ Do not forget to add `#include "simpleDSP_fir.h"`
     Serial.println(calcTime);
   }
 ```
-### Test Octave Code
+### Octave Test Code
 
 filter design
 
