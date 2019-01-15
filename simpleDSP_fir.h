@@ -8,12 +8,12 @@
 
 typedef struct
 {
-    int coefLen;
-    float *H;
-    float *dly;
+    int coefBLen;
+    float *coefsB;
+    float *dlyX;
 }FIR;
 
-void init(FIR *fir, int coefLen, float *coef);
+void init(FIR *fir, int coefBLen, float *coefsB);
 float filt(FIR *fir, int input);
 
-#endif /* end simpleDSP_fir.h */
+#endif /*end simpleDSP_fir.h */
