@@ -324,14 +324,14 @@ long calcTime;
 void setup()
 {
     Serial.begin(9600);
-    initFIR(&fir1, 46, coef);
+    init(&fir1, 46, coef);
     Serial.print("Initiliaze finished");
 
     for (int i = 0; i < 255; i++)
     {
         startTime = micros();
         float a;
-        a = filtFIR(&fir1, input[i]);
+        a = filt(&fir1, input[i]);
         calcTime = micros() - startTime;
         Serial.println(a);
         Serial.print("Total calculation time: ");

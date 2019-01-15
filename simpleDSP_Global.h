@@ -4,8 +4,8 @@
 
 struct COMPLEX
 {
-    double real;
-    double imag;
+    float real;
+    float imag;
 };
 
 #endif /* end simpleDSP_Global.h */

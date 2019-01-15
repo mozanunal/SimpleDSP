@@ -6,12 +6,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct IIR
+typedef struct
 {
-	int n;
+	int coefLen1;
 	float *H;
 	float *dly;
-};
+}IIR;
 
 void initIIR(IIR *iir, int N1, float *coef1, int n2, float *coef2);
 float filtIIR(IIR *iir, int input);

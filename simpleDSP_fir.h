@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct FIR
+typedef struct
 {
     int coefLen;
     float *H;
