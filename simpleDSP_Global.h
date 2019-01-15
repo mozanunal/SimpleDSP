@@ -3,9 +3,9 @@
 #define _SIMPLEDSP_GLOBAL_H
 
 struct COMPLEX
-  {
-  double real;
-  double imag;
-  };
+{
+    double real;
+    double imag;
+};
 
-#endif  /* end simpleDSP_Global.h */
+#endif /* end simpleDSP_Global.h */
