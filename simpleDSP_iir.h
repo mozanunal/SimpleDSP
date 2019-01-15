@@ -8,12 +8,15 @@
 
 typedef struct
 {
-	int coefLen1;
-	float *H;
-	float *dly;
+	int coefALen;
+	float *coefsA;
+	int coefBLen;
+	float *coefsB;
+	float *dlyX;
+	float *dlyY;
 }IIR;
 
-void initIIR(IIR *iir, int N1, float *coef1, int n2, float *coef2);
-float filtIIR(IIR *iir, int input);
+void init(IIR *iir, int coefBLen, float *coefsB, int coefALen, float *coefsA);
+float filt(IIR *iir, int input);
 
 #endif /* end simpleDSP_iir.h */
