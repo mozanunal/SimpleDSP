@@ -8,7 +8,7 @@
 CC = gcc
 INCLUDE = 
 
-SRC = testFIR.c simpleDSP_fir.c
+SRC = testIIR.c simpleDSP_iir.c
 
 OUT = testFIR
 CCFLAGS = 
