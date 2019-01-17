@@ -1,7 +1,7 @@
 
 #include "simpleDSP_fir.h"
 
-void init(FIR *fir, int coefBLen, float *coefsB)
+void firInit(FIR *fir, int coefBLen, float *coefsB)
 {
     fir->coefBLen = coefBLen;
     fir->coefsB = (float *)malloc(fir->coefBLen * 4);
@@ -11,7 +11,7 @@ void init(FIR *fir, int coefBLen, float *coefsB)
     fir->coefsB = coefsB;
 }
 
-float filt(FIR *fir, int input)
+float firFilt(FIR *fir, int input)
 {
     float acc = 0.0;
     fir->dlyX[0] = input;
