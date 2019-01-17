@@ -49,11 +49,13 @@ Do not forget to add `#include "simpleDSP_FFT.h"`
 
 ### Arduino Example
 
-FIR is filter structure which keep delays and coeficients of filter. filtFIR function require 2 arguments.
-FIR instance and data
+FIR is filter structure which keep delays and coeficients of filter. There are 2 public functions. `firInit` initiliazes the structure according to parameters and makes required memory allocations. Coeficients and its lenght are given as parameter to this function
 Do not forget to add `#include "simpleDSP_fir.h"`
-
-
+```
+void firInit(FIR *fir, int coefBLen, float *coefsB);
+float firFilt(FIR *fir, int input);
+```
+[FIR Full example](/examples/fir/fir.ino)
 ```
     Serial.begin(9600);
     firInit(&fir1, 46, coef);
@@ -77,11 +79,15 @@ Do not forget to add `#include "simpleDSP_fir.h"`
 
 ### Arduino Example
 
-IIR is filter structure which keep delays and coeficient of filter. filtFIR function require 2 arguments.
-data 
-data lenght
+IIR is filter structure which keep delays and coeficient of filter. filtIIR function require 2 arguments. Object instance and data. It returns the filtered output. 
+
+```
+void iirInit(IIR *iir, int coefBLen, float *coefsB, int coefALen, float *coefsA);
+float iirFilt(IIR *iir, int input);
+```
 Do not forget to add `#include "simpleDSP_fir.h"`
 
+[IIR Full example](/examples/iir/iir.ino)
 
 ```
     Serial.begin(9600);
@@ -152,28 +158,51 @@ Examples:
  freqz (fir1 (15, [0.2, 0.5], "stop"));  # note the zero-crossing at 0.1
  freqz (fir1 (15, [0.2, 0.5], "stop", "noscale"));
 ```
+
+```
+figure
+b= fir1 (20, 0.3, "low");
+y = filter(b,1,x);
+plot(y)
+
+```
+
 filter frequency response
 
 ![function reference fir1](https://cloud.githubusercontent.com/assets/13440502/22388029/20f5a6fc-e4e7-11e6-99ed-885fe116be1d.png)
 
 [Resource for IIR](https://octave.sourceforge.io/signal/function/butter.html)
 
-desi
-```
+
+
+```octave
 figure
 [b, a] = butter(3, 0.3, "low");
 y = filter(b,a,x);
 plot(y)
 ```
 
-**Output from octave**
+```shell
+octave:> b
+b =
+
+    0.049533      0.1486      0.1486    0.049533
+octave:> a
+a =
+
+   1.00000  -1.16192   0.69594  -0.13776
+
+```
 
 
-output 
+**Outputs after filtering **
+
+
+Time Domain Signal 
 
 ![output](https://cloud.githubusercontent.com/assets/13440502/22374514/24a63a88-e4af-11e6-8bd8-b7fa703bd459.png)
 
-output signal FFT
+FFT of Output Signal
 
 ![outputf](https://cloud.githubusercontent.com/assets/13440502/22374645/b0cbd266-e4af-11e6-9266-32aafec12986.png)
 
