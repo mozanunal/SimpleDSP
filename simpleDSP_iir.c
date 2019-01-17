@@ -1,7 +1,7 @@
 
 #include "simpleDSP_iir.h"
 
-void init(IIR *iir, int coefBLen, float *coefsB, int coefALen, float *coefsA)
+void iirInit(IIR *iir, int coefBLen, float *coefsB, int coefALen, float *coefsA)
 {
     /* memory allocation for H and delay values */
     iir->coefsB = (float *)malloc(iir->coefBLen * 4);
@@ -12,14 +12,14 @@ void init(IIR *iir, int coefBLen, float *coefsB, int coefALen, float *coefsA)
     iir->coefBLen = coefBLen;
     iir->coefALen = coefALen;
     iir->coefsB = coefsB;
-    iir->coefsA = coefALen;
+    iir->coefsA = coefsA;
     for (int i = 0; i < iir->coefBLen; i++)
         iir->dlyX[i] = 0.0;
     for (int i = 0; i < iir->coefALen; i++)
         iir->dlyY[i] = 0.0;
 }
 
-float filt(IIR *iir, int input)
+float iirFilt(IIR *iir, int input)
 {
     // xn[6]=xn[5]
     // xn[5]=xn[4]
@@ -42,10 +42,17 @@ float filt(IIR *iir, int input)
     // return cikis
     float acc1 = 0.0;
     float acc2 = 0.0;
-    iir->dly[0] = input;
-    for (int i = 0; i < fir->n; i++)
-        acc += fir->H[i] * fir->dly[i];
-    for (int i = (fir->n) - 1; i > 0; i--)
-        fir->dly[i] = fir->dly[i - 1];
-    return acc;
+    /* b coeficients*/
+    iir->dlyX[0] = input;
+    for (int i = 0; i < iir->coefBLen; i++)
+        acc1 += iir->coefsB[i] * iir->dlyX[i];
+    for (int i = (iir->coefBLen) - 1; i > 0; i--)
+        iir->dlyX[i] = iir->dlyX[i - 1];    
+    /* a coeficients*/
+    iir->dlyY[0] = 0;
+    for (int i = 0; i < iir->coefALen; i++)
+        acc1 += iir->coefsA[i] * iir->dlyY[i];
+    for (int i = (iir->coefALen) - 1; i > 0; i--)
+        iir->dlyY[i] = iir->dlyY[i - 1];    
+    return acc1+acc2;
 }

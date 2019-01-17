@@ -2,9 +2,14 @@
 #ifndef _SIMPLEDSP_IIR_H
 #define _SIMPLEDSP_IIR_H
 
+#ifdef __cplusplus
+  extern "C" {
+#endif
+
 #include "simpleDSP_Global.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 
 typedef struct
 {
@@ -16,7 +21,11 @@ typedef struct
 	float *dlyY;
 }IIR;
 
-void init(IIR *iir, int coefBLen, float *coefsB, int coefALen, float *coefsA);
-float filt(IIR *iir, int input);
+void iirInit(IIR *iir, int coefBLen, float *coefsB, int coefALen, float *coefsA);
+float iirFilt(IIR *iir, int input);
+
+#ifdef __cplusplus
+  }
+#endif
 
 #endif /* end simpleDSP_iir.h */
