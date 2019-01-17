@@ -81,7 +81,7 @@ Do not forget to add `#include "simpleDSP_fir.h"`
 
 
 ```
-  init(&fir1, 46, coef);
+  initFilter&fir1, 46, coef);
   Serial.print("Initiliaze finished");
   
 
