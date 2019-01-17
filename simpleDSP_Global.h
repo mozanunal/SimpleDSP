@@ -2,10 +2,10 @@
 #ifndef _SIMPLEDSP_GLOBAL_H
 #define _SIMPLEDSP_GLOBAL_H
 
-struct COMPLEX
-  {
-  double real;
-  double imag;
-  };
+typedef struct
+{
+    float real;
+    float imag;
+} COMPLEX;
 
-#endif  /* end simpleDSP_Global.h */
+#endif /* end simpleDSP_Global.h */

@@ -6,9 +6,9 @@ https://github.com/mozanunal/SimpleDSP/wiki
 ## Performance:
 
 ### Arduino Nano
-* fft 16 points: 2 ms
-* fft 32 points: 6 ms
-* fft 64 points: 16 ms
+* FFT 16 points: 2 ms
+* FFT 32 points: 6 ms
+* FFT 64 points: 16 ms
 * fir filter 10 coeficients: 190 us
 * fir filter 23 coeficients: 453 us
 * fir filter 46 coeficients: 900 us
@@ -16,9 +16,9 @@ https://github.com/mozanunal/SimpleDSP/wiki
 for 10 coeficients implementation max frequency 5khz
 
 ## Arduino Due
-* fft 64 points: 2 ms
-* fft 128 points: 6 ms
-* fft 256 points: 10 ms
+* FFT 64 points: 2 ms
+* FFT 128 points: 6 ms
+* FFT 256 points: 10 ms
 
 ## Fast Fourier Transform (FFT) and Inverse Fast Fourier Transform (IFFT)
 
@@ -28,7 +28,7 @@ for 10 coeficients implementation max frequency 5khz
 FFT and IFFT functions require 2 arguments.
 data 
 data lenght
-Do not forget to add `#include "simpleDSP_fft.h"`
+Do not forget to add `#include "simpleDSP_FFT.h"`
 
 
 ```
@@ -41,7 +41,7 @@ Do not forget to add `#include "simpleDSP_fft.h"`
 
 ### Octave Test Code
 
-This code create sample data and plot the signal and its fft. The octave code only needed for testing of function.
+This code create sample data and plot the signal and its FFT. The octave code only needed for testing of function.
 
 ```
 N=255;
@@ -53,7 +53,7 @@ x(i)=1000*cos(2*pi*f1*i/fo)+1000*cos(2*pi*f2*i/fo);
 printf("%d\n",x(i));
 end
 plot(x);
-X=abs(fft(x));
+X=abs(FFT(x));
 figure;
 kor=(1:N)*fo/N;
 plot(kor,X);
@@ -81,7 +81,7 @@ Do not forget to add `#include "simpleDSP_fir.h"`
 
 
 ```
-  init(&fir1, 46, coef);
+  initFilter&fir1, 46, coef);
   Serial.print("Initiliaze finished");
   
 
@@ -130,7 +130,7 @@ output
 
 ![output](https://cloud.githubusercontent.com/assets/13440502/22374514/24a63a88-e4af-11e6-8bd8-b7fa703bd459.png)
 
-output signal fft
+output signal FFT
 
 ![outputf](https://cloud.githubusercontent.com/assets/13440502/22374645/b0cbd266-e4af-11e6-9266-32aafec12986.png)
 

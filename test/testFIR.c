@@ -1,12 +1,6 @@
-/*This is a signal sum of 800 hz and 3.2 khz sine waves
-which sampled in 10khz and 32 of this samples are
-create a data array.(input signal)
-In this example input signal is filtered with 
-46 points fir filter. Filter is designed as low pass filter 
-and filter coeficient calculated at Octave
-more info https://github.com/mozanunal/SimpleDSP/wiki/FIR
-*/
+
 #include "simpleDSP_fir.h"
+#include <stdio.h>
 
 float coef[46] =
     {
@@ -317,25 +311,27 @@ int input[255] =
 
 FIR fir1;
 
-long startTime;
-long calcTime;
-
-void setup()
+int main()
 {
-    Serial.begin(9600);
-    firInit(&fir1, 46, coef);
-    Serial.println("FIR filter initiliaze finished");
-    float a;
-    startTime = micros();
+    init(&fir1, 46, coef);
+    printf("init finished\n");
+    fflush(stdout);
+    /*
+    for (int i = 0; i < 46; i++) {
+        printf("\ninit %f-  %d\n",fir1.H[i],fir1.n);
+        fflush(stdout);
+    }
+    */
+
     for (int i = 0; i < 255; i++)
     {
-        a = firFilt(&fir1, input[i]);
+        float a;
+        a = filt(&fir1, input[i]);
+        printf("%f\n", a);
+        fflush(stdout);
     }
-    calcTime = micros() - startTime;
-    Serial.print("Total calculation time: ");
-    Serial.println(calcTime);
-}
 
-void loop()
-{
+    printf("filter finished\n");
+    fflush(stdout);
+    return 0;
 }

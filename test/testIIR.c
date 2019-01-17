@@ -1,61 +1,20 @@
-/*This is a signal sum of 800 hz and 3.2 khz sine waves
-which sampled in 10khz and 32 of this samples are
-create a data array.(input signal)
-In this example input signal is filtered with 
-46 points fir filter. Filter is designed as low pass filter 
-and filter coeficient calculated at Octave
-more info https://github.com/mozanunal/SimpleDSP/wiki/FIR
-*/
-#include "simpleDSP_fir.h"
 
-float coef[46] =
+#include "simpleDSP_iir.h"
+#include <stdio.h>
+
+float coefB[4] =
     {
-        0.00113053589111100,
-        0.00101072486672204,
-        0.000468847235288906,
-        0.000603489038578611,
-        -0.00208429064928862,
-        -0.00340892103405782,
-        -0.00362003403497889,
-        -0.00179251511006564,
-        0.00229274890344763,
-        0.00758093034996730,
-        0.0117041456801663,
-        0.0117198866352666,
-        0.00550311571071171,
-        -0.00673606239661105,
-        -0.0215570909070923,
-        -0.0326442238558300,
-        -0.0325783280789586,
-        -0.0155583311041979,
-        0.0199164513221244,
-        0.0695391190116097,
-        0.123656990515743,
-        0.169767912370886,
-        0.196291877716615,
-        0.196291877716615,
-        0.169767912370886,
-        0.123656990515743,
-        0.0695391190116097,
-        0.0199164513221244,
-        -0.0155583311041979,
-        -0.0325783280789586,
-        -0.0326442238558300,
-        -0.0215570909070923,
-        -0.00673606239661105,
-        0.00550311571071171,
-        0.0117198866352666,
-        0.0117041456801663,
-        0.00758093034996730,
-        0.00229274890344763,
-        -0.00179251511006564,
-        -0.00362003403497889,
-        -0.00340892103405782,
-        -0.00208429064928862,
-        -0.000603489038578611,
-        0.000468847235288906,
-        0.00101072486672204,
-        0.00113053589111100};
+        0.049533,
+        0.1486,
+        0.1486,
+        0.049533};
+
+float coefA[4] =
+    {
+        1,
+        -1.1619,
+        0.69594,
+        -0.13776};
 
 int input[255] =
     {
@@ -315,27 +274,29 @@ int input[255] =
         -613.161,
         -1618.03};
 
-FIR fir1;
+IIR iir1;
 
-long startTime;
-long calcTime;
-
-void setup()
+int main()
 {
-    Serial.begin(9600);
-    firInit(&fir1, 46, coef);
-    Serial.println("FIR filter initiliaze finished");
-    float a;
-    startTime = micros();
+    init(&iir1, 4, coefB, 4, coefA);
+    printf("init finished\n");
+    fflush(stdout);
+    /*
+    for (int i = 0; i < 46; i++) {
+        printf("\ninit %f-  %d\n",fir1.H[i],fir1.n);
+        fflush(stdout);
+    }
+    */
+
     for (int i = 0; i < 255; i++)
     {
-        a = firFilt(&fir1, input[i]);
+        float a;
+        a = filt(&iir1, input[i]);
+        printf("%f\n", a);
+        fflush(stdout);
     }
-    calcTime = micros() - startTime;
-    Serial.print("Total calculation time: ");
-    Serial.println(calcTime);
-}
 
-void loop()
-{
+    printf("filter finished\n");
+    fflush(stdout);
+    return 0;
 }

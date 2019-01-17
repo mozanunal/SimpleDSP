@@ -4,11 +4,7 @@
 
 #include "simpleDSP_Global.h"
 
-extern COMPLEX w[];
-
 void FFT(COMPLEX *Y, int N);
 void IFFT(COMPLEX *Y, int N);
 
-
-
-#endif  /* end simpleDSP_fft.h */
+#endif /* end simpleDSP_fft.h */

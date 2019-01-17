@@ -2,21 +2,26 @@
 #ifndef _SIMPLEDSP_FIR_H
 #define _SIMPLEDSP_FIR_H
 
+#ifdef __cplusplus
+  extern "C" {
+#endif
+
 #include "simpleDSP_Global.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-
-struct FIR
+typedef struct
 {
-  int n;
-  float *H;
-  float *dly;
-};
-    
-void initFIR(FIR *fir, int N, float *coef);
-float filtFIR(FIR *fir, int input);
+    int coefBLen;
+    float *coefsB;
+    float *dlyX;
+}FIR;
 
+void firInit(FIR *fir, int coefBLen, float *coefsB);
+float firFilt(FIR *fir, int input);
 
+#ifdef __cplusplus
+  }
+#endif
 
-#endif  /* end simpleDSP_fir.h */ 
+#endif /*end simpleDSP_fir.h */
