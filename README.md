@@ -1,8 +1,9 @@
 # SimpleDSP
-A basic dsp library for arduino and most of the microcontrollers which can be programmed in C/C++
+SimpleDSP is a basic DSP library which is for arduino and most of the microcontrollers which can be programmed in C/C++
 
 ## Performance:
-
+ Here is some examples for its performance. Actually it is not optimized for performance. Its main focuses are portability and education.
+ 
 ### Arduino Nano
 * FFT 16 points: 2 ms
 * FFT 32 points: 6 ms
@@ -11,12 +12,13 @@ A basic dsp library for arduino and most of the microcontrollers which can be pr
 * fir filter 23 coeficients: 453 us
 * fir filter 46 coeficients: 900 us
 
-for 10 coeficients implementation max frequency 5khz
+10 coeficients FIR filter can be run at 5khz max frequency on an Arduino Nano.
 
 ## Arduino Due
 * FFT 64 points: 2 ms
 * FFT 128 points: 6 ms
 * FFT 256 points: 10 ms
+
 
 ## Fast Fourier Transform (FFT) and Inverse Fast Fourier Transform (IFFT)
 
@@ -33,7 +35,7 @@ Do not forget to add `#include "simpleDSP_FFT.h"`
 
 [FFT spectrum example](/examples/fft_spectrum/fft_spectrum.ino)
 
-```
+```cpp
   FFT(data,DATA_LEN);
   IFFT(data,DATA_LEN);
   calcTime = millis()-startTime;
@@ -51,12 +53,12 @@ Do not forget to add `#include "simpleDSP_FFT.h"`
 
 FIR is filter structure which keep delays and coeficients of filter. There are 2 public functions. `firInit` initiliazes the structure according to parameters and makes required memory allocations. Coeficients and its lenght are given as parameter to this function
 Do not forget to add `#include "simpleDSP_fir.h"`
-```
+```cpp
 void firInit(FIR *fir, int coefBLen, float *coefsB);
 float firFilt(FIR *fir, int input);
 ```
 [FIR Full example](/examples/fir/fir.ino)
-```
+```cpp
     Serial.begin(9600);
     firInit(&fir1, 46, coef);
     Serial.println("FIR filter initiliaze finished");
@@ -79,17 +81,17 @@ float firFilt(FIR *fir, int input);
 
 ### Arduino Example
 
-IIR is filter structure which keep delays and coeficient of filter. filtIIR function require 2 arguments. Object instance and data. It returns the filtered output. 
+IIR is filter structure which keep delays and coeficient of filter. There are 2 functions to implement IIR filter using SimpleDSP library. initIIR function is the constructor function for the filter. Filter coeficients for a and b should be given as arguments to this function. After init, filtIIR must be used as filtering function. This function requires 2 arguments. Object instance and data. It returns the filtered output. 
 
-```
+```cpp
 void iirInit(IIR *iir, int coefBLen, float *coefsB, int coefALen, float *coefsA);
 float iirFilt(IIR *iir, int input);
 ```
-Do not forget to add `#include "simpleDSP_fir.h"`
+Do not forget to add `#include "simpleDSP_iir.h"` to your code.
 
 [IIR Full example](/examples/iir/iir.ino)
 
-```
+```cpp
     Serial.begin(9600);
     iirInit(&iir1, 4, coefB, 4, coefA);
     Serial.println("IIR filter initiliaze finished");
@@ -109,9 +111,8 @@ Do not forget to add `#include "simpleDSP_fir.h"`
 ## Octave Test Code
 
 This code create sample data and plot the signal and its FFT. The octave code only needed for testing of function.
+Create sample signal which is at 10 kHz sample rate and it is the combination of 3.2 kHz and 800 Hz sine waves.
 
-
-Create sample signal which is at 10 kHz sample rate and it is the combination of  3.2 kHz and 800 Hz sine waves.
 ```octave
 N=255;
 f1=800;
@@ -195,7 +196,7 @@ a =
 ```
 
 
-**Outputs after filtering **
+** Outputs after filtering **
 
 
 Time Domain Signal 
