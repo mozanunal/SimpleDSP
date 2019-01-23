@@ -196,7 +196,7 @@ a =
 ```
 
 
-** Outputs after filtering **
+**Outputs after filtering**
 
 
 Time Domain Signal 
