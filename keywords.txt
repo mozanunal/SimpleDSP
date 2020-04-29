@@ -8,7 +8,7 @@
 
 COMPLEX	KEYWORD1
 FIR	KEYWORD1
-IIR KEYWORD1
+IIR	KEYWORD1
 
 ###########################################
 # Methods and Functions (KEYWORD2)
